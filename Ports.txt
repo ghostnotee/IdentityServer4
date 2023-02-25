@@ -1,0 +1,5 @@
+Auth Server		:	https://localhost:7078
+Client1			:	https://localhost:7133
+Client2			:	https://localhost:7011
+WebApi1			:	https://localhost:7298
+WebApi2			:	https://localhost:7181
