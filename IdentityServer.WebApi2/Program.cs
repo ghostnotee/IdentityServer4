@@ -10,6 +10,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         configureOptions.Audience = "resource_api2";
     });
 
+builder.Services.AddAuthorization(configure =>
+{
+    configure.AddPolicy("ReadPicture", policy =>
+    {
+        policy.RequireClaim("scope", "api1.read");
+    });
+    configure.AddPolicy("UpdateOrCreate", policy =>
+    {
+        policy.RequireClaim("scope", new[] { "api1.write", "api1.update" });
+    });
+});
+
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true;
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
