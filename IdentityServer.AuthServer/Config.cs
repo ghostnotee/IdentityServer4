@@ -42,7 +42,7 @@ public static class Config
                 ClientName="Client App 1",
                 ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1.read", "api2.write", "api2.update" }
+                AllowedScopes = { "api1.read" }
             },
             new Client()
             {
@@ -50,7 +50,7 @@ public static class Config
                 ClientName="Client App 2",
                 ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1.read", "api2.write", "api2.update" }
+                AllowedScopes = { "api1.read", "api2.read", "api2.write", "api2.update" }
             }
         };
     }
