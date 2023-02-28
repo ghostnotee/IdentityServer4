@@ -39,18 +39,18 @@ public static class Config
             new Client()
             {
                 ClientId = "Client1",
-                ClientName="Client1 App",
-                ClientSecrets = new []{new Secret("secret".Sha256())},
+                ClientName="Client App 1",
+                ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1.read", "api1.write", "api2.update" }
+                AllowedScopes = { "api1.read", "api2.write", "api2.update" }
             },
             new Client()
             {
                 ClientId = "Client2",
-                ClientName="Client2 App",
-                ClientSecrets = new []{new Secret("secret".Sha256())},
+                ClientName="Client App 2",
+                ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1.read", "api1.write", "api2.update" }
+                AllowedScopes = { "api1.read", "api2.write", "api2.update" }
             }
         };
     }
