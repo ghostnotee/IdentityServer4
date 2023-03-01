@@ -10,11 +10,13 @@ public static class Config
         {
             new ApiResource("resource_api1")
             {
-                Scopes = { "api1.read", "api1.write", "api1.update" }
+                Scopes = { "api1.read", "api1.write", "api1.update" },
+                ApiSecrets = new[]{new Secret("api1secret".Sha256())}
             },
             new ApiResource("resource_api2")
             {
-                Scopes= { "api2.read", "api2.write", "api2.update" }
+                Scopes= { "api2.read", "api2.write", "api2.update" },
+                ApiSecrets = new[]{new Secret("api2secret".Sha256())}
             }
         };
     }
