@@ -1,6 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("Cookies")
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.SignInScheme = "Cookies";
+        options.Authority = "https://localhost:7078";
+        options.ClientId = "Client1-Mvc";
+        options.ClientSecret = "secret";
+        options.ResponseType = "code id_token";
+    });
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
