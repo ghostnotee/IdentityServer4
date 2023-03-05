@@ -1,5 +1,7 @@
 ﻿using IdentityModel.Client;
+using IdentityServer.Client1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace IdentityServer.Client1.Controllers;
 
@@ -14,12 +16,13 @@ public class ProductController : Controller
 
     public async Task<IActionResult> Index()
     {
+        List<Product> products = new();
         HttpClient httpClient = new HttpClient();
         var discovery = await httpClient.GetDiscoveryDocumentAsync("https://localhost:7078");
 
         if (discovery.IsError)
         {
-            // ToDo log etc.
+            // TODO log etc.
         }
 
         ClientCredentialsTokenRequest request = new ClientCredentialsTokenRequest();
@@ -30,7 +33,7 @@ public class ProductController : Controller
 
         if (token.IsError)
         {
-            // ToDo log etc.
+            // TODO log etc.
         }
 
         // https://localhost:7298
@@ -40,13 +43,15 @@ public class ProductController : Controller
 
         if (response.IsSuccessStatusCode)
         {
-            var content = response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync();
+            products = JsonConvert.DeserializeObject<List<Product>>(content);
+            //products = JsonSerializer.Deserialize<List<Product>>(content);
         }
         else
         {
 
         }
 
-        return View();
+        return View(products);
     }
 }
