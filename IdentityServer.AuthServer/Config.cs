@@ -61,9 +61,10 @@ public static class Config
             {
                 ClientId = "Client1-Mvc",
                 ClientName="Client App 1 Mvc",
+                RequirePkce = false,
                 ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.Hybrid,
-                RedirectUris = new List<string>{ "https://localhost:7133/sign-oidc" },
+                RedirectUris = new List<string>{ "https://localhost:7133/signin-oidc" },
                 AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile}
             }
         };

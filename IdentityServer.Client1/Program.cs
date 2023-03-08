@@ -12,7 +12,7 @@ builder.Services.AddAuthentication(options =>
         options.SignInScheme = "Cookies";
         options.Authority = "https://localhost:7078";
         options.ClientId = "Client1-Mvc";
-        options.ClientSecret = "secret";
+        options.ClientSecret = "testsecret";
         options.ResponseType = "code id_token";
     });
 
@@ -32,6 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
