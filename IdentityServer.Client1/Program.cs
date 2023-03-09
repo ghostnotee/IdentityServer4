@@ -15,6 +15,7 @@ builder.Services.AddAuthentication(options =>
         options.ClientSecret = "testsecret";
         options.ResponseType = "code id_token";
         options.GetClaimsFromUserInfoEndpoint = true;
+        options.SaveTokens = true;
     });
 
 builder.Services.AddControllersWithViews();
