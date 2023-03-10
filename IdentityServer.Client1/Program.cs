@@ -16,6 +16,7 @@ builder.Services.AddAuthentication(options =>
         options.ResponseType = "code id_token";
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
+        options.Scope.Add("api1.read");
     });
 
 builder.Services.AddControllersWithViews();

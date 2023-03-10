@@ -65,7 +65,7 @@ public static class Config
                 ClientSecrets = new []{new Secret("testsecret".Sha256())},
                 AllowedGrantTypes = GrantTypes.Hybrid,
                 RedirectUris = new List<string>{ "https://localhost:7133/signin-oidc" },
-                AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile}
+                AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile,"api1.read"}
             }
         };
     }
